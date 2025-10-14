@@ -1,0 +1,28 @@
+{
+  "name": "find-a-friend-api",
+  "version": "1.0.0",
+  "description": "API para encontrar animais para adoção.",
+  "license": "ISC",
+  "author": "Renan Andrade de Gouveia",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "fastify": "^5.6.1",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.37.0",
+    "eslint": "^9.37.0",
+    "globals": "^16.4.0",
+    "jiti": "^2.6.1",
+    "prisma": "^6.17.1",
+    "tsup": "8.5.0",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.46.1"
+  }
+}
