@@ -13,3 +13,72 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum PetAge {
+  YOUNG
+  CHILD
+  ADULT
+  SENIOR
+}
+
+enum Size {
+  SMALL
+  MEDIUM
+  BIG
+}
+
+enum Level {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model Organization {
+  id               String    @id @default(uuid()) @db.Uuid
+  responsible_name String
+  email            String    @unique
+  zip_code         String
+  address          String
+  city             String
+  latitude         Decimal
+  longitude        Decimal
+  whatsapp         String
+  password         String
+  created_at       DateTime  @default(now())
+  updated_at       DateTime?
+
+  @@map("organizations")
+}
+
+model PetForAdoption {
+  id                      String                   @id @default(uuid()) @db.Uuid
+  name                    String
+  description             String?
+  age                     PetAge
+  size                    Size
+  independence_level      Level
+  energy_level            Level
+  adoption_environment    Size
+  petAdoptionRequirements PetAdoptionRequirement[]
+  PetImage                PetImage[]
+
+  @@map("pet_for_adoption")
+}
+
+model PetAdoptionRequirement {
+  id          Int    @id @default(autoincrement())
+  requirement String
+
+  pet    PetForAdoption @relation(fields: [pet_Id], references: [id])
+  pet_Id String         @db.Uuid
+
+  @@map("pet_adoption_requirements")
+}
+
+model PetImage {
+  id        Int    @id @default(autoincrement())
+  image_url String
+
+  pet    PetForAdoption @relation(fields: [pet_Id], references: [id])
+  pet_Id String         @db.Uuid
+}

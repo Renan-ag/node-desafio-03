@@ -21,7 +21,6 @@ export default [
       // ✅ Regras gerais
       "semi": ["error", "always"],
       "quotes": ["error", "single"],
-      "no-unused-vars": "warn",
       "no-console": "off", // Fastify usa console em dev
 
       // 🧠 TypeScript
